@@ -1,0 +1,116 @@
+
+
+
+{% extends "base.html" %}
+{% block body %}
+
+
+
+<!-- Content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>Welcome</strong> to the ITC Python Members Club!</h1>
+                            <div class="description">
+                            	<p>
+	                            	Existing members please use the login selection below. New users. welcome, please feel free to register below, by clicking Register Now!
+                            	</p>
+                            </div>
+                            <div class="top-big-link">
+                            	<a class="btn btn-link-1 launch-modal" href="#" data-modal-id="modal-login">Member Login</a>
+                            </div>
+                            <div class="top-big-link">
+                                <a class="btn btn-link-1 launch-modal" href="#" data-modal-id="modal-register">Register Now!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- MODAL -->
+        <div class="modal fade" id="modal-register" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+        	<div class="modal-dialog">
+        		<div class="modal-content">
+        			
+        			<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal">
+        					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        				</button>
+        				<h3 class="modal-title" id="modal-register-label">Welcome!</h3>
+        				<p>In order to join the ITC Python Members Club please fill out the form below"</p>
+        			</div>
+        			
+        			<div class="modal-body">
+        				
+	                    <form role="form" class="registration-form" name ="form" id ="form">
+	                    	<div class="form-group">
+	                    		<label class="sr-only" for="form-first-name">First name</label>
+	                        	<input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+	                        </div>
+	                        <div class="form-group">
+	                        	<label class="sr-only" for="form-last-name">Last name</label>
+	                        	<input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
+	                        </div>
+	                        <div class="form-group">
+	                        	<label class="sr-only" for="form-email">Email</label>
+	                        	<input type="email" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
+	                        </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-password">Password</label>
+                                <input type="password" name="form-password" placeholder="Password..." class"form-password form-control" id="form-password">
+                            </div>
+	                        <div class="form-group">
+	                        	<p>Administrative Account?</p>
+	                        	<select class = "select" name = "form-select-type">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+	                        </div>
+	                        <button type="submit" class="btn">Sign me up!</button>
+	                    </form>
+	                    
+        			</div>
+        			
+        		</div>
+        	</div>
+        </div>
+
+
+        <!-- MODAL -->
+        <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h3 class="modal-title" id="modal-register-label">Enter ITC Python member details to continue</h3>
+                    </div>
+                    
+                    <div class="modal-body">
+                        
+                        <form role="form" action="" method="post" class="login-form">
+                            <div class="form-group">
+                                <label class="sr-only" for="form-email">Email</label>
+                                <input type="email" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-password">Password</label>
+                                <input type="password" name="form-password" placeholder="Password..." class"form-password form-control" id="form-password">
+                            </div>
+                            <button type="submit" class="btn">Submit Login Details</button>
+                        </form>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
