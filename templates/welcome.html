@@ -15,9 +15,13 @@
                         <div class="col-sm-8 col-sm-offset-2 text">
                             <h1><strong>Welcome</strong> to the ITC Python Members Club!</h1>
                             <div class="description">
-                            	<p>
-	                            	Existing members please use the login selection below. New users. welcome, please feel free to register below, by clicking Register Now!
-                            	</p>
+                                {% if message %}
+                                    <p> {{message}} </p>
+                                {% else %}
+                            	   <p>
+                                        Existing members please use the login selection below. New users. welcome, please feel free to register below, by clicking Register Now!
+                            	   </p>
+                                {% endif %}
                             </div>
                             <div class="top-big-link">
                             	<a class="btn btn-link-1 launch-modal" href="#" data-modal-id="modal-login">Member Login</a>

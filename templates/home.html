@@ -2,6 +2,39 @@
 {% extends "base.html" %}
 {% block body %}
 
-This is the user home page
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"> {{ message }}</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/logout">Logout</a></li>
+        <li><a href="#">Members Club Gallery</a></li>
+        <li><a href="#">Statements</a></li> 
+        <li><a href="#">Sure</a></li> 
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class = "container-fluid">
+  {% if session.admin %}
+      <p>Hi there {{name}}, this is the admin's page!</p>
+      <h2>Below you will see a list of currently registered users!</h2>
+      <div class = "container">
+      {% for entry in entries %}
+            <div class = "well"
+            <h1><strong>{{ entry.title }}</strong>{{ entry.text|safe }}
+            </div>
+      {% else %}
+      {% endfor %}
+      </div>
+  {% else %}
+      <p>Hi there {{name}}, this is the standard user account page</p>
+  {% endif %}
+
+</div>
 
 {% endblock %}
