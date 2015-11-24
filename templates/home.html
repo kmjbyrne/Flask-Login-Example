@@ -11,8 +11,8 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="/logout">Logout</a></li>
         <li><a href="#">Members Club Gallery</a></li>
-        <li><a href="#">Statements</a></li> 
-        <li><a href="#">Sure</a></li> 
+        <li><a href="#">Statements</a></li>
+        <li><a href="#">Sure</a></li>
       </ul>
     </div>
   </div>
@@ -23,10 +23,11 @@
   {% if session.admin %}
       <p>Hi there {{name}}, this is the admin's page!</p>
       <h2>Below you will see a list of currently registered users!</h2>
-      <div class = "container">
+      <div class = "container-fluid">
       {% for entry in entries %}
-            <div class = "well"
-            <h1><strong>{{ entry.title }}</strong>{{ entry.text|safe }}
+            <div class = "col-sm-4 text-center">
+                <strong>{{ entry.title }}</strong>{{ entry.text|safe }}
+                <p> {{entry.email}} </p>
             </div>
       {% else %}
       {% endfor %}
