@@ -39,7 +39,7 @@ $(document).ready(function(){
     		}
     	});
 
-        $('#loading-anim').empty().append('<div class="spinner-loader">Processing.... </div>');
+        $('#loading-anim').empty().append('<div class="spinner-loader">Processing.... </div><h2>Loading...</h2>');
         $.ajax({
             url: '/register',
             data: $('#form').serialize(),
