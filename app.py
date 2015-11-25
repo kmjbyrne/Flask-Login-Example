@@ -24,10 +24,10 @@ app.config['SECURITY_PASSWORD_SALT'] = 'this is the application secret dEvElopmE
 ### CONFIG SETTINGS ###
 #######################
 
-host = 'kmjb.mysql.pythonanywhere-services.com'
-password = 'passworditcarlow'
-user = 'kmjb'
-db = 'kmjb$MEMBERS_CLUB'
+host = 'localhost'
+password = '6928542m'
+user = 'root'
+db = 'MEMBERS_CLUB'
 
 mail = Mail()
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
@@ -180,29 +180,41 @@ def meaning():
 
 @app.route('/register', methods=['POST'])
 def register():
+	
     _forename = str(request.form['form-first-name'])
     _surname = str(request.form['form-last-name'])
     _email = str(request.form['form-email'])
     _password = str(generate_password_hash(request.form['form-password']))
     _type = request.form['form-select-type']
 
+    target = open('server.log', 'w')
+    target.write('FORM ACCEPTED')
+
     if _type == '1':
         _type = 'Y'
     else:
         _type = 'N'
 
+    target.write('FORM ACCEPTED')
+
     _sql = "SELECT * FROM USERS WHERE USERNAME = '{0}'".format(_email)
     data = runSQLQuery(_sql, 0)
+
+
+    target.write(_sql)
 
     if len(data) > 0:
         return jsonify({'status': 'EXIST'})
     else:
+    	print("Got to here")
         # Python SQL is very sensitive to column ordering. Use null for ID value
         _sql_insert = """INSERT INTO USERS VALUES (null, '{0}','{1}','{2}','{3}','{4}', now(), 'N', null)""".format(_forename,
                 _surname, _email, _password, _type)
 
         if runSQLQuery(_sql, 1) == True:
+
             data = runSQLQuery(_sql_insert, 1)
+
             mail_token = generate_confirmation_token(_email)
             confirm_url = url_for('confirm_email', token=mail_token, _external=True)
             html = render_template('mail.html', _name = str(_forename), confirm_url=confirm_url)
