@@ -5,14 +5,12 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"> {{ message }}</a>
+      <a class="navbar-brand" href="#"> {{ username }}</a>
     </div>
     <div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Login</a></li>
-        <li><a href="#">Members Club Gallery</a></li>
-        <li><a href="#">Statements</a></li>
-        <li><a href="#">Sure</a></li>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
@@ -21,10 +19,9 @@
 
 <div class = "container-fluid">
 
-    <h1>It appears something has gone wrong. We apologise and
-        our team of highly trained monkeys will be right on the issue!</h1>
+    <h1>Oops! While things usually work as expected, now is a time when they dont. What happened?</h1>
     <span class="glyphicon glyphicon-wrench"></span>
-    <h2> {{mesage}} </h2>
+    <h2> {{message}} </h2>
 
 </div>
 

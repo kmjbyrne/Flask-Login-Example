@@ -2,7 +2,6 @@
 {% extends "base.html" %}
 {% block body %}
 
-
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -15,8 +14,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">{{message}}</a></li>
-        <li class="active"><a href="/logout">Logout</a></li>
+        <li class="active"><a href="/home">Home</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Options<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -26,7 +24,10 @@
         </li>
         <li><a href="#">Future Content</a></li>
         <li><a href="#">Ready</a></li>
-        <li><a href="/meaning">What is the meaning of life?</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+        <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
@@ -34,22 +35,10 @@
 
 
 <div class = "container-fluid">
-  {% if session.admin %}
-      <p>Hi there {{name}}, this is the admin's page!</p>
-      <h2>Below you will see a list of currently registered users!</h2>
-      <div class = "container-fluid">
-      {% for entry in entries %}
-            <div class = "col-sm-4 text-center">
-                <strong>{{ entry.title }}</strong>{{ entry.text|safe }}
-                <p> {{entry.email}} </p>
-            </div>
-      {% else %}
-      {% endfor %}
-      </div>
-  {% else %}
-      <p>Hi there {{name}}, this is the standard user account page</p>
-  {% endif %}
-
+    <div class = "col-sm-4 text-center">
+        <p id = 'answer'> It is 42 </p>
+    </div>
 </div>
+
 
 {% endblock %}

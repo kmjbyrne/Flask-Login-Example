@@ -2,16 +2,19 @@
 <html lang="en">
 
 <head>
+        <!-- Tested on Chrome and Firefox Community and Firefox Developer -->
+        <!-- Expect issues with IE editions below 10. Untested with Safari -->
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <title>
-                {{ title_ref }}
+                C00170460 Assignment A
         </title>
 
         <!-- CSS -->
+        <link rel="stylesheet" href="http://css-spinners.com/css/spinner/spinner.css" type="text/css">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/bootstrap/css/bootstrap.min.css')}}">
 		<link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/form-elements.css')}}">
@@ -27,7 +30,7 @@
 <body>
 
     {% block body %}
-    
+
     {% endblock %}
 
     <!-- Javascript -->
@@ -35,10 +38,6 @@
     <script src="{{ url_for('static', filename = 'assets/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{ url_for('static', filename = 'assets/js/jquery.backstretch.min.js')}}"></script>
     <script src="{{ url_for('static', filename = 'assets/js/scripts.js')}}"></script>
-    
-    <!--[if lt IE 10]>
-        <script src="assets/js/placeholder.js"></script>
-    <![endif]-->
 
     <footer class="container-fluid text-center">
         <span type="footer_expander" class="glyphicon glyphicon-chevron-down" data-toggle="collapse" data-target="#clpbl"></span>

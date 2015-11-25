@@ -1,8 +1,15 @@
+/*
 
-input[type="text"], 
-[type="password"], 
+Author: Keith Byrne
+Date: 18/11/2015
+References: W3 Schools, Bootstrap
+
+/*  CSS styling for modal form elements */
+
+input[type="text"],
+[type="password"],
 [type="email"],
-textarea, 
+textarea,
 textarea.form-control {
 	height: 50px;
     margin: 0;
@@ -37,15 +44,15 @@ select{
     -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
 
-textarea, 
+textarea,
 textarea.form-control {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	line-height: 30px;
 }
 
-input[type="text"]:focus, 
-textarea:focus, 
+input[type="text"]:focus,
+textarea:focus,
 textarea.form-control:focus {
 	outline: 0;
 	background: #444;
@@ -56,8 +63,6 @@ textarea.form-control:focus {
 input[type="text"]:-moz-placeholder, textarea:-moz-placeholder, textarea.form-control:-moz-placeholder { color: #888; }
 input[type="text"]:-ms-input-placeholder, textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder { color: #888; }
 input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #888; }
-
-
 
 button.btn {
 	width: 100%;
