@@ -12,61 +12,19 @@ from flask import Flask,render_template,jsonify,url_for,request,session,flash
 from werkzeug import generate_password_hash, check_password_hash
 from itsdangerous import URLSafeTimedSerializer
 from flask.ext.mail import Message, Mail
-import MySQLdb
+from components.SQLConnect import runSQLQuery
 from functools import wraps
-import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'this is the application secret dEvElopmEnt kEy'
-app.config['SECURITY_PASSWORD_SALT'] = 'this is the application secret dEvElopmEnt kEy'
-
-#######################
-### CONFIG SETTINGS ###
-#######################
-
-host = 'localhost'
-password = '6928542m'
-user = 'root'
-db = 'MEMBERS_CLUB'
-
+app.config.from_object('config')
 mail = Mail()
-app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-app.config["MAIL_USERNAME"] = "c00170460@gmail.com"
-app.config["MAIL_PASSWORD"] = 'itcarlowpassword'
-app.config["MAIL_DEFAULT_SENDER"] = 'c00170460@gmail.com'
 mail.init_app(app)
 
 ADMINS = ['c00170460@gmail.com']
 
-
 ##############################
 #### NON ROUTE FUNCTIONS #####
 ##############################
-
-def runSQLQuery(_sql, code):
-    con = MySQLdb.connect(host, user, password, db)
-    cursor = con.cursor()
-
-    if code == 0: # All select queries here
-        cursor.execute(_sql)
-        data = cursor.fetchall()
-        return data
-    elif code == 1: #All insert queries here
-        try:
-            cursor.execute(_sql)
-            con.commit()
-            return True
-        except Exception as e:
-            print(str(e))
-            return False
-
-    cursor.close()
-    con.close()
 
 def send_email(to, subject, template):
     msg = Message(
@@ -92,6 +50,7 @@ def confirm_token(token, expiration=3600):
     except:
         return False
     return email
+
 
 
 ##############################
@@ -261,11 +220,6 @@ def error(e):
         return render_template('error.html', message='Hmmmm,\
             seems the server is acting up.Please check back\
             a little later while our team get on this issue')
-
-
-
-if __name__ == '__main__':
-    app.run()
 
 
 # Notes and issues

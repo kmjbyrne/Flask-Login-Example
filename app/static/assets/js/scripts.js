@@ -7,6 +7,9 @@ JS and AJAX below. See corresponding PY code for JSON return
 */
 
 $(document).ready(function(){
+
+    $("#intro-logo").fadeIn("normal");
+
     /*
         Fullscreen background
     */
