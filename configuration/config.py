@@ -1,3 +1,5 @@
+import os
+
 # Statement for enabling the development environment
 DEBUG = True
 
@@ -45,4 +47,6 @@ MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 MAIL_USERNAME = "c00170460@gmail.com"
 MAIL_PASSWORD = 'itcarlowpassword'
 MAIL_DEFAULT_SENDER = 'c00170460@gmail.com'
+
+ADMINS = ['c00170460@gmail.com']
 

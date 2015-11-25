@@ -4,45 +4,45 @@ Author: Keith Byrne
 Date: 16/11/2015
 
 JS and AJAX below. See corresponding PY code for JSON return
+
+References: W3 Schools; Bootstrap; JQuery API
+
 */
 
 $(document).ready(function(){
-
-    $("#intro-logo").fadeIn("normal");
-
     /*
         Fullscreen background
     */
     $.backstretch("assets/img/backgrounds/1.jpg");
     /*
-	    Modals
-	*/
-	$('.launch-modal').on('click', function(e){
-		e.preventDefault();
-		$( '#' + $(this).data('modal-id') ).modal();
-	});
+        Modals
+    */
+    $('.launch-modal').on('click', function(e){
+        e.preventDefault();
+        $( '#' + $(this).data('modal-id') ).modal();
+    });
 
     /*
         Form validation
     */
     $('.registration-form input[type="text"], .registration-form textarea').on('focus', function() {
-    	$(this).removeClass('input-error');
+        $(this).removeClass('input-error');
     });
 
     //Ajax js for submitting login request
     $('.registration-form').on('submit', function(e) {
-    	$(this).find('input[type="text"], textarea').each(function(){
-    		if( $(this).val() == "" )
+        $(this).find('input[type="text"], textarea').each(function(){
+            if( $(this).val() == "" )
             {
-    			e.preventDefault();
-    			$(this).addClass('input-error');
-    		}
-    		else {
-    			$(this).removeClass('input-error');
-    		}
-    	});
+                e.preventDefault();
+                $(this).addClass('input-error');
+            }
+            else {
+                $(this).removeClass('input-error');
+                $('#loading-anim').empty().append('<div class="spinner-loader">Processing.... </div>');
+            }
+        });
 
-        $('#loading-anim').empty().append('<div class="spinner-loader">Processing.... </div><h2>Loading...</h2>');
         $.ajax({
             url: '/register',
             data: $('#form').serialize(),
@@ -53,16 +53,16 @@ $(document).ready(function(){
                 {
                     $('.modal.in').modal('hide')
                     $('.description').html("<h1>Registration successful, please await your verification mail!<h1>");
-                    $('.loading-anim').empty();
+                    restore_order();
                 }
                 else if (data.status == 'EXIST')
                 {
                     alert_exists();
-                    $('#loading-anim').empty().append('<button type="submit" class="btn">Sign me up!</button>');
+                    restore_order();
                 }
                 else
                 {
-
+                    window.location='/error';
                 }
             }
         });
@@ -122,4 +122,9 @@ function login_redirect(){
 
 function alert_exists(){
     alert("Username (email) already exists, please enter a different email");
+}
+
+function restore_order(){
+    $('#loading-anim').empty().append('<button type="submit" class="btn">Sign me up!</button>');
+    $('.loading-anim').hide();
 }

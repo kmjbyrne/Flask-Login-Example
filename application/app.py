@@ -10,22 +10,20 @@
 
 from flask import Flask,render_template,jsonify,url_for,request,session,flash
 from werkzeug import generate_password_hash, check_password_hash
-from itsdangerous import URLSafeTimedSerializer
 from flask.ext.mail import Message, Mail
+from itsdangerous import URLSafeTimedSerializer
 from components.SQLConnect import runSQLQuery
 from functools import wraps
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_object('configuration.config')
+
 mail = Mail()
 mail.init_app(app)
-
-ADMINS = ['c00170460@gmail.com']
 
 ##############################
 #### NON ROUTE FUNCTIONS #####
 ##############################
-
 def send_email(to, subject, template):
     msg = Message(
         subject,
@@ -33,8 +31,6 @@ def send_email(to, subject, template):
         html=template,
         sender=app.config['MAIL_DEFAULT_SENDER'])
     mail.send(msg)
-
-
 
 def generate_confirmation_token(email):
     serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
@@ -50,8 +46,6 @@ def confirm_token(token, expiration=3600):
     except:
         return False
     return email
-
-
 
 ##############################
 #### APPLICATION ROUTES ######

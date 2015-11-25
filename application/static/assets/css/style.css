@@ -56,7 +56,12 @@ img { max-width: 100%; }
     color: #fff;
     -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
 }
-.btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active { outline: 0; opacity: 0.6; color: #fff; }
+.btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active { 
+	outline: 0;
+    color: #fff;
+    box-shadow: 0px 0px 40px #0099ff;
+    color: #ffff00;
+}
 
 
 /***** Content *****/
@@ -197,10 +202,6 @@ only screen and (                min-resolution: 2dppx)
     background-color: #2d2d31;
 }
 
-.spinner-loader{
-    background-color: #10bbfc;
-    text-shadow: 0px 0px 3px #10bbfc;
-}
 
 #answer{
     font-size: 40px;
